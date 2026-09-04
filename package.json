@@ -1,11 +1,11 @@
 {
-  "name": "create-win-project",
+  "name": "web-scaffolder",
   "version": "1.0.0",
-  "description": "Project scaffolding CLI by Win",
+  "description": "Stack-aware web application scaffolding CLI",
   "main": "index.js",
   "type": "module",
   "bin": {
-    "create-win-project": "./index.js"
+    "web-scaffolder": "./index.js"
   },
   "files": [
     "index.js",
@@ -19,6 +19,7 @@
     "docs/CONTENT_MODEL.md",
     "docs/DEPENDENCY_MAINTENANCE.md",
     "docs/STACK_EXTENSIONS.md",
+    "docs/ROADMAP.md",
     "README.md",
     "LICENSE"
   ],
