@@ -1,6 +1,6 @@
 # Stack Extensions
 
-Web Scaffolding is designed so new technology options can be added without rewriting the core generator.
+Web Scaffolder is designed so new technology options can be added without rewriting the core generator.
 
 ## Extension model
 
@@ -13,7 +13,21 @@ The core orchestration owns side effects. Stack adapters describe capabilities a
 
 ## Adding a new stack
 
-For a new frontend/backend technology, add:
+Use the extension generator to create the initial structure:
+
+```bash
+npm run stack:new -- <id> <frontend|backend|data> "Human Label"
+```
+
+For example:
+
+```bash
+npm run stack:new -- payments backend "Payments API"
+```
+
+The generated extension includes the manifest, adapter skeleton, focused playbooks, and the files needed to continue implementation. Review the generated files before registering the stack.
+
+A new stack should include:
 
 ```text
 playbooks/stack/<id>.manifest.json
@@ -33,7 +47,7 @@ If the stack requires executable framework-specific generation, add an adapter u
 lib/stacks/<id>/index.js
 ```
 
-using `defineStackAdapter()` from `lib/stacks/contract.js` and register it in `lib/stacks/index.js`.
+using `defineStackAdapter()` from `lib/stacks/contract.js` and register it explicitly in `lib/stacks/index.js`.
 
 ## Adapter contract
 
@@ -52,10 +66,11 @@ Use `defineStackAdapter()` so malformed definitions fail immediately.
 
 - Prefer manifests and playbooks over hardcoded stack checks.
 - Keep dependency versions centralized in compatibility profiles.
-- Keep user-facing application UX separate from developer experience of the scaffolder.
-- Do not make a new stack silently available: register it explicitly and add contract/behavior tests.
+- Keep generated application UX separate from the developer experience of Web Scaffolder.
+- Do not make a new stack silently available: register it explicitly and add contract and behavior tests.
 - Add CI coverage for the new stack before considering it production-ready.
+- Keep adapters declarative and narrow; core orchestration remains responsible for side effects.
 
 ## Future direction
 
-The next extension-system phase can add a generated stack template and a `stack add` workflow that creates the manifest, adapter skeleton, playbooks, compatibility entries, and tests together. The goal is to make adding a new stack a repeatable contribution workflow rather than a collection of manual edits.
+The extension system can grow toward package-distributed stack adapters, schema validation, and a safe `stack add` workflow. The goal is to make adding a new stack a repeatable contribution workflow rather than a collection of manual edits.
