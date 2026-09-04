@@ -6,11 +6,12 @@ Web-Scaffolder should evolve from a project generator into a **stack-aware devel
 
 ## Upgrade pillars
 
-### 1. Better developer experience
-- Make the interactive interview clearer and progressive: ask only questions that affect the selected stack.
+### 1. Developer experience (DX) of Web-Scaffolder
+- Make the scaffolder interview clearer and progressive: ask only questions that affect the selected stack.
 - Add a non-interactive configuration path for CI and repeatable generation.
 - Provide dry-run/preview output before writing files.
 - Improve diagnostics with actionable remediation instead of raw errors.
+- Make adding a new technology stack a repeatable extension workflow.
 
 ### 2. Modern generated foundations
 - Keep generated projects strict by default.
@@ -30,7 +31,14 @@ Web-Scaffolder should evolve from a project generator into a **stack-aware devel
 - Add generated-output contract tests for every supported pairing.
 - Make dependency/version changes reviewable independently from scaffolding logic.
 
-### 5. Quality and security
+### 5. Generated application UX (UX) — separate from scaffolder DX
+- Treat UX as a property of the **generated application**, not the Web-Scaffolder CLI.
+- Generate accessible, responsive foundations where the selected frontend supports them.
+- Provide consistent loading, error, empty, and form-validation states.
+- Keep authentication UX and security architecture aligned without mixing them into the scaffolder's developer workflow.
+- Add stack-specific UI guidance through generated playbooks rather than CLI concerns.
+
+### 6. Quality and security
 - Fail closed when required configuration is missing.
 - Avoid shell-string interpolation when invoking external tools.
 - Validate generated paths and refuse unsafe destinations.
@@ -49,6 +57,7 @@ Web-Scaffolder should evolve from a project generator into a **stack-aware devel
 - Make interview questions conditional on prior answers.
 - Add stack capability discovery and conflict explanations.
 - Add preview of files, dependencies, scripts, and environment variables.
+- Keep generated application UX requirements separate from CLI DX requirements.
 
 ### Phase C — Upgrade engine
 - Add `doctor` checks for generated projects.
@@ -59,6 +68,7 @@ Web-Scaffolder should evolve from a project generator into a **stack-aware devel
 ### Phase D — Ecosystem
 - Add additional stack manifests without duplicating scaffolding logic.
 - Add extension points for concerns and playbooks.
+- Provide a stack-extension generator and stable adapter contract.
 - Publish stable machine-readable schemas for manifests and generated metadata.
 
 ## Definition of done
