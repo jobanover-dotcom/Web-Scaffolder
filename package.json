@@ -18,12 +18,14 @@
     "docs/ARCHITECTURE.md",
     "docs/CONTENT_MODEL.md",
     "docs/DEPENDENCY_MAINTENANCE.md",
+    "docs/STACK_EXTENSIONS.md",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
     "start": "node index.js",
     "doctor": "node index.js doctor",
+    "stack:new": "node scripts/create-stack.mjs",
     "test": "vitest run",
     "validate:content": "node scripts/validate-content.mjs",
     "matrix:smoke": "node scripts/compatibility-matrix.mjs --scope=smoke",
